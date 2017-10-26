@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source /etc/profile
-source /mnt/work/env-tf-1.4/bin/activate
+source /mnt/work/env-tf/bin/activate
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 export NUM_GPUS=4
 
