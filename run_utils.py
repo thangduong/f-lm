@@ -10,6 +10,7 @@ from common import CheckpointLoader
 
 
 def run_train(dataset, hps, logdir, ps_device, task=0, master=""):
+    f = open('loss-log.txt', 'w')
     with tf.variable_scope("model"):
         model = LM(hps, "train", ps_device)
     stime = time.time()
@@ -94,11 +95,13 @@ def run_train(dataset, hps, logdir, ps_device, task=0, master=""):
                 prev_global_step = cur_global_step
                 print("Iteration %d, time = %.2fs, wps = %.0f, train loss = %.4f" % (
                     cur_global_step, cur_time - prev_time, wps, fetched[1]))
+                f.write("%s,%s,%s,%s,%s\r\n" % (cur_global_step, cur_time, cur_time-prev_time, wps, fetched[1]))
+                f.flush()
                 prev_time = cur_time
         #save last model
         sv._saver.save(sess, sv.save_path, cur_global_step)
     sv.stop()
-
+    f.close()
 
 def run_eval(dataset, hps, logdir, mode, num_eval_steps):
     with tf.variable_scope("model"):
