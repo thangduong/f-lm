@@ -2,8 +2,8 @@
 
 source /etc/profile
 source /mnt/work/env-tf-1.4/bin/activate
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-export NUM_GPUS=4
+export CUDA_VISIBLE_DEVICES=0,1
+export NUM_GPUS=2
 
 export SECONDS=60480000
 export LOGSUFFIX=BIGLSTM
