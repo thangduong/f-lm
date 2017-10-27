@@ -4,8 +4,9 @@ source /etc/profile
 source /mnt/work/env-tf/bin/activate
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 export NUM_GPUS=4
-export PS_LIST=52.247.207.135:5999
-export WORKER_LIST=52.183.86.201:5999,52.247.196.123:5999
+export PS_LIST=52.247.196.123:5999
+#52.247.207.135:5999
+export WORKER_LIST=52.183.86.201:5999
 export SECONDS=60480000
 export LOGSUFFIX=BIGLSTM
 export myip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
